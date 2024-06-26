@@ -12,12 +12,10 @@ export default function NewProject(){
                 </li>
             </main>
             <div>
-                <p>
                     <InputBox label="Title" />
                     <InputBox label="description" textarea />
                     <InputBox label="Due Date"  />
 
-                </p>
             </div>
 
         </div>
