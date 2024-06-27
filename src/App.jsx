@@ -45,7 +45,7 @@ function App() {
 ///
   return (
     <main className="h-screen flex gap-10">
-      <ProjectsSidebar onStartProject={handleProjectStart} project={ProjectsState.project} />
+      <ProjectsSidebar onStartProject={handleProjectStart} projects={ProjectsState.project} />
       {content}
       
     </main>
