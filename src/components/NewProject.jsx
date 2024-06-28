@@ -4,11 +4,12 @@ import Modal from "./Modal.jsx";
 
 export default function NewProject({onAdd}){
 
+    const modal = useRef();
+
     const Title = useRef();
     const description = useRef();
     const Due_Date = useRef();
 
-    const Modal = useRef();
 
 
     function handleSave(){
@@ -19,7 +20,7 @@ export default function NewProject({onAdd}){
         // Checking for validation 
         if(EnteredTitle.trim() === '' || EnteredDescription.trim() === '' || EnteredDate.trim() === ''){
             // showing Modal
-            Modal.current.open()
+            modal.current.open()
             return;
         }
 
@@ -34,7 +35,7 @@ export default function NewProject({onAdd}){
 
     return(
         <>
-        <Modal ref={Modal} buttonCaption="Okay" > 
+        <Modal ref={modal} buttonCaption="Okay" > 
             <h2>Invalid Input</h2>
             <p>Opps... look like you forget enter a values.</p>
             <p>Please make sure you provide a valid values for every input fields.</p>

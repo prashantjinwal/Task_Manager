@@ -1,7 +1,7 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import { createPortal } from "react-dom";
 
-const Modal = forwardRef( function Modal({children, buttonCaption , ref}){
+const Modal = forwardRef( function Modal({children, buttonCaption }, ref){
 
     const dialog = useRef();
     useImperativeHandle(ref, () =>{
@@ -22,7 +22,8 @@ const Modal = forwardRef( function Modal({children, buttonCaption , ref}){
         </form>
     
     </dialog>
-    ), document.getElementById("modal-root")
+    , document.getElementById('modal-root')
+    )
 });
 
 export default Modal
