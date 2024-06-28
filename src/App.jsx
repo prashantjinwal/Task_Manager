@@ -2,6 +2,7 @@ import { useState } from "react";
 import NoProjectSelected from "./components/NoProjectSelected";
 import ProjectsSidebar from "./components/ProjectsSidebar";
 import NewProject from "./components/NewProject";
+import SelectedProject from "./components/SelectedProject";
 
 function App() {
   
@@ -10,18 +11,31 @@ function App() {
     project:[]
   })
 
-  function handleProjectStart(){
-    setProjectState(prevContent => {
+  function handleSelectedProject(id){
+    setProjectState((prevContent) => {
       return{
         ...prevContent,
-        SelectedProjectID:null,
+        SelectedProjectID: id,
       };
     })
   }
-  let content;
+
+  function handleProjectStart(){
+    setProjectState((prevContent) => {
+      return{
+        ...prevContent,
+        SelectedProjectID: null,
+      };
+    })
+  }
+
+  const selectedproject = ProjectsState.project.find((projects) => projects.id === ProjectsState.SelectedProjectID)
+
+
+  let content = <SelectedProject project={selectedproject} />
 
   function handleCancel(){
-    setProjectState(prevContent => {
+    setProjectState((prevContent) => {
       return{
         ...prevContent,
         SelectedProjectID: undefined,
@@ -31,9 +45,9 @@ function App() {
 
 
   if(ProjectsState.SelectedProjectID === undefined){
-    content = <NoProjectSelected onStartProject={handleProjectStart} />
+    content = ( <NoProjectSelected onStartProject={handleProjectStart} /> );
   }else if (ProjectsState.SelectedProjectID === null){
-    content = <NewProject onAdd={handleAddProject} onCancel={handleCancel} />
+    content = ( <NewProject onAdd={handleAddProject} onCancel={handleCancel} /> );
   }
 
   function handleAddProject(projectData){
@@ -54,7 +68,7 @@ function App() {
 ///
   return (
     <main className="h-screen flex gap-10">
-      <ProjectsSidebar onStartProject={handleProjectStart} projects={ProjectsState.project} />
+      <ProjectsSidebar onSelectProject={handleSelectedProject} onStartProject={handleProjectStart}  projects={ProjectsState.project} />
       {content}
       
     </main>
