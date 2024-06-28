@@ -7,8 +7,8 @@ import SelectedProject from "./components/SelectedProject";
 function App() {
   
   const [ProjectsState, setProjectState] = useState({
-    SelectedProjectID:undefined,
-    project:[]
+    SelectedProjectID: undefined,
+    projects: []
   })
 
   function handleSelectedProject(id){
@@ -29,7 +29,7 @@ function App() {
     })
   }
 
-  const selectedproject = ProjectsState.project.find((projects) => projects.id === ProjectsState.SelectedProjectID)
+  const selectedproject = ProjectsState.projects.find((project) => project.id === ProjectsState.SelectedProjectID)
 
 
   let content = <SelectedProject project={selectedproject} />
@@ -55,12 +55,12 @@ function App() {
       const projectID = Math.random()
       const newProject = {
         ...projectData,
-        Id:projectID 
+        id:projectID 
       }
       return{
         ...prevState,
         SelectedProjectID:undefined,
-        project:[...prevState.project, newProject ]
+        projects:[...prevState.projects, newProject ]
       }
     })
     // console.log(ProjectsState)
@@ -68,7 +68,7 @@ function App() {
 ///
   return (
     <main className="h-screen flex gap-10">
-      <ProjectsSidebar onSelectProject={handleSelectedProject} onStartProject={handleProjectStart}  projects={ProjectsState.project} />
+      <ProjectsSidebar onSelectProject={handleSelectedProject} onStartProject={handleProjectStart}  projects={ProjectsState.projects} />
       {content}
       
     </main>
