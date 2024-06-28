@@ -20,11 +20,20 @@ function App() {
   }
   let content;
 
+  function handleCancel(){
+    setProjectState(prevContent => {
+      return{
+        ...prevContent,
+        SelectedProjectID: undefined,
+      };
+    })
+  }
+
 
   if(ProjectsState.SelectedProjectID === undefined){
     content = <NoProjectSelected onStartProject={handleProjectStart} />
   }else if (ProjectsState.SelectedProjectID === null){
-    content = <NewProject onAdd={handleAddProject} />
+    content = <NewProject onAdd={handleAddProject} onCancel={handleCancel} />
   }
 
   function handleAddProject(projectData){
