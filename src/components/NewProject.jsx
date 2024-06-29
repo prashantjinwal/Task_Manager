@@ -5,7 +5,7 @@ import Modal from "./Modal.jsx";
 export default function NewProject({onAdd, onCancel}){
 
     const modal = useRef();
-
+    
     const Title = useRef();
     const description = useRef();
     const Due_Date = useRef();
