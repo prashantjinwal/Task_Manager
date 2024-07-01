@@ -1,6 +1,6 @@
 import NewTask from "./NewTask";
 
-export default function Task({tasks, onDelete, onAdd}){
+export default function Task({tasks, onAdd}){
     return(
         <section>
             <h2 className="text-2xl mb-2 font-bold text-stone-700">Task</h2>
@@ -8,10 +8,7 @@ export default function Task({tasks, onDelete, onAdd}){
             { tasks.length === 0 && <p className="text-stone-800 my-4" >
                 The project does not have any task yet...
             </p>}
-           { tasks > 0 && 
-                <ul className="p-4 mt-8 rounded-md bg-stone-100"> 
-
-                    {
+           { tasks.length > 0 && <ul className="p-4 mt-8 rounded-md bg-stone-100"> {
                         tasks.map((task) =>{
                             <li key={task.id} className="flex justify-between my-4" >
                                  <span> {task.text} </span>

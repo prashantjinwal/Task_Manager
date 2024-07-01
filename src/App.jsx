@@ -18,9 +18,8 @@ function App() {
       const taskId = Math.random()
       const newTask = {
         text: text,
-        taskId : taskId,
         projectId: prevState.SelectedProjectID,
-        id:taskId 
+        id: taskId 
       }
       return{
         ...prevState,
